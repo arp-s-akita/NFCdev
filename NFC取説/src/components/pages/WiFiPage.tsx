@@ -1,20 +1,18 @@
 import { Box, CssBaseline } from "@mui/material";
 import { Header } from "../organisms/Header";
-import { Items } from "../organisms/Items";
-import { LifeIsCrossing } from "../organisms/LifeIsCrossing";
+import { WiFi } from "../molecules/WiFi";
 import { Footer } from "../organisms/Footer";
 
-export const TopPage = () => {
+export const WiFiPage = () => {
   return (
     <CssBaseline>
       <Box>
         <Header />
         <Box>
-          <Items />
-          <LifeIsCrossing />
+          <WiFi />
         </Box>
         <Footer />
       </Box>
     </CssBaseline>
   );
-};
+}; 
