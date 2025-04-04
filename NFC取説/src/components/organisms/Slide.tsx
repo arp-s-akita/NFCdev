@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { SliderCard } from "../molecules/SliderCard";
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
+import { ProductGrid } from "../molecules/ProductGrid";
 
-// スライド用の画像データ
+// 取説用の画像データ
 const images = [
   {
     src: "https://img1.kakaku.k-img.com/images/productimage/fullscale/K0001568352.jpg",
@@ -24,31 +25,36 @@ const images = [
 
 export const Slide = () => {
   return (
-    <motion.div
-      className="slider"
-      animate={{ x: ["0%", "-100%"] }} // スライドを右から左へ
-      initial={{ x: "0%" }} // 最初の位置を0%に設定
-      transition={{
-        repeat: Infinity, // 無限ループ
-        duration: 30, // 1周の時間（調整可能）
-        ease: "linear", // スムーズな動き
-      }}
-      style={{
-        display: "flex", // 水平方向に並べる
-        position: "relative", // 絶対位置にする
-      }}
-    >
-      <Box sx={{ display: "flex", position: "relative" }}>
-        {/* スライドを2セット用意して無限ループにする */}
-        {[...images, ...images].map((src, index) => (
-          <SliderCard
-            key={index}
-            img={src.src}
-            URL={src.link}
-            name={""} // 名前は空に設定
-          />
-        ))}
+    <Container maxWidth="lg">
+      <Box sx={{ mb: 4 }}>
+        <motion.div
+          className="slider"
+          animate={{ x: ["0%", "-100%"] }}
+          initial={{ x: "0%" }}
+          transition={{
+            repeat: Infinity,
+            duration: 30,
+            ease: "linear",
+          }}
+          style={{
+            display: "flex",
+            position: "relative",
+          }}
+        >
+          <Box sx={{ display: "flex", position: "relative" }}>
+            {[...images, ...images].map((src, index) => (
+              <SliderCard
+                key={index}
+                img={src.src}
+                URL={src.link}
+                name={""}
+              />
+            ))}
+          </Box>
+        </motion.div>
       </Box>
-    </motion.div>
+
+      <ProductGrid images={images} />
+    </Container>
   );
 };
